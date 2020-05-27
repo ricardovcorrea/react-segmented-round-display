@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-const SegmentedRoundDisplay = ({ goals, arcWidth, arcSpacing, totalArcSize, emptyColor, filledColor, radius, displayValue, style }) => {
+import { Spring } from 'react-spring/renderprops'
+
+const SegmentedRoundDisplay = ({ segments, arcWidth, emptyArcWidth, arcSpacing, totalArcSize, emptyColor, filledColor, radius, displayValue, style, animationDuration, animated }) => {
     const [arcs, setArcs] = useState([]);
 
-    const totalArcs = goals.length;
+    const totalArcs = segments.length;
 
     const totalSpaces = totalArcs - 1;
     const totalSpacing = totalSpaces * arcSpacing;
@@ -17,7 +19,7 @@ const SegmentedRoundDisplay = ({ goals, arcWidth, arcSpacing, totalArcSize, empt
     const svgHeight = (radius + arcWidth) * 2;
 
     const createArcs = useCallback(() => {
-        const newArcs = goals.map((goal, index) => {
+        const newArcs = segments.map((goal, index) => {
             const newArc = {
                 centerX: radius + arcWidth,
                 centerY: radius + arcWidth,
@@ -30,13 +32,13 @@ const SegmentedRoundDisplay = ({ goals, arcWidth, arcSpacing, totalArcSize, empt
                 newArc.end += arcSpacing * index;
             }
 
-            newArc.filled = goal.done ? newArc.end : scaleValue(goal.spent, [0, goal.total], [newArc.start, newArc.end]);
+            newArc.filled = scaleValue(goal.filled, [0, goal.total], [newArc.start, newArc.end]);
 
             return newArc;
         });
 
         setArcs(newArcs);
-    }, [goals, arcSize, arcSpacing, arcWidth, arcsStart, radius]);
+    }, [segments, arcSize, arcSpacing, arcWidth, arcsStart, radius]);
 
     const renderDisplayValue = () => {
         const arc = arcs[arcs.length - 1];
@@ -54,16 +56,34 @@ const SegmentedRoundDisplay = ({ goals, arcWidth, arcSpacing, totalArcSize, empt
 
     useEffect(() => {
         createArcs();
-    }, [goals, createArcs]);
+    }, [segments, createArcs]);
 
     return (
         <svg width={svgWidth} height={svgHeight} style={style}>
             {arcs.map((arc, index) => (
                 <g key={index.toString()}>
-                    <path fill="none" stroke={emptyColor} strokeWidth={arcWidth} strokeLinecap="round" d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.end)} />
+                    <path fill="none" stroke={emptyColor} strokeWidth={emptyArcWidth} strokeLinecap="round" d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.end)} />
 
-                    {arc.filled > arc.start && (
-                        <path fill="none" stroke={filledColor} strokeWidth={arcWidth} strokeLinecap="round" d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.filled)} />
+                    {animated && (
+                        <Spring from={{ x: arc.start, y: 0 }} to={{ x: arc.filled + 0.6, y: arcWidth }} config={{ duration: animationDuration / totalArcs, delay: animationDuration / totalArcs * index }}>
+                            {props => (
+                                <>
+                                    {arc.filled > arc.start && (
+                                        <path fill="none" stroke={filledColor} strokeWidth={props.y} strokeLinecap="round" d={drawArc(arc.centerX, arc.centerY, radius, arc.start, props.x)} />
+
+                                    )}
+                                </>
+                            )}
+                        </Spring>
+                    )}
+
+                    {!animated && (
+                        <>
+                            {arc.filled > arc.start && (
+                                <path fill="none" stroke={filledColor} strokeWidth={arcWidth} strokeLinecap="round" d={drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.filled)} />
+
+                            )}
+                        </>
                     )}
                 </g>
             ))}
@@ -73,14 +93,14 @@ const SegmentedRoundDisplay = ({ goals, arcWidth, arcSpacing, totalArcSize, empt
 }
 
 SegmentedRoundDisplay.propTypes = {
-    goals: PropTypes.arrayOf(
+    segments: PropTypes.arrayOf(
         PropTypes.shape({
-            done: PropTypes.bool,
-            total: PropTypes.number,
-            spent: PropTypes.number
+            total: PropTypes.number.isRequired,
+            filled: PropTypes.number.isRequired
         })
     ),
     arcWidth: PropTypes.number,
+    emptyArcWidth: PropTypes.number,
     arcSpacing: PropTypes.number,
     totalArcSize: PropTypes.number,
     radius: PropTypes.number,
@@ -88,16 +108,21 @@ SegmentedRoundDisplay.propTypes = {
     filledColor: PropTypes.string,
     formatAmount: PropTypes.func,
     style: PropTypes.object,
+    animationDuration: PropTypes.number,
+    animated: PropTypes.bool
 }
 
 SegmentedRoundDisplay.defaultProps = {
-    goals: [],
+    segments: [],
     arcWidth: 7,
+    emptyArcWidth: 7,
     arcSpacing: 7,
     totalArcSize: 280,
     radius: 150,
     emptyColor: 'grey',
-    filledColor: 'green'
+    filledColor: 'green',
+    animationDuration: 700,
+    animated: true
 }
 
 export default SegmentedRoundDisplay;
