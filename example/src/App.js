@@ -1,5 +1,5 @@
 import React from 'react';
-import SegmentedRoundDisplay from './SegmentedRoundDisplay';
+import SegmentedRoundDisplay from 'react-segmented-round-display';
 
 import './App.css';
 
