@@ -1,6 +1,6 @@
 ## Segmented Round Display
 
-![Example](https://raw.githubusercontent.com/ricardovcorrea/segmented-round-display-react/master/example.gif)
+![Example](https://raw.githubusercontent.com/ricardovcorrea/segmented-round-display-react/master/examples.gif)
 
 #### Props
 | Name  | Type  | Default  | Description  |
