@@ -56,17 +56,21 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var SegmentedRoundDisplay = function SegmentedRoundDisplay(_ref) {
   var segments = _ref.segments,
-      arcWidth = _ref.arcWidth,
+      filledArcWidth = _ref.filledArcWidth,
       emptyArcWidth = _ref.emptyArcWidth,
       arcSpacing = _ref.arcSpacing,
       totalArcSize = _ref.totalArcSize,
-      emptyColor = _ref.emptyColor,
-      filledColor = _ref.filledColor,
+      emptyArcColor = _ref.emptyArcColor,
+      filledArcColor = _ref.filledArcColor,
       radius = _ref.radius,
-      displayValue = _ref.displayValue,
       style = _ref.style,
       animationDuration = _ref.animationDuration,
-      animated = _ref.animated;
+      animated = _ref.animated,
+      formatValue = _ref.formatValue,
+      incompleteArcColor = _ref.incompleteArcColor,
+      displayValue = _ref.displayValue,
+      valueBoxColor = _ref.valueBoxColor,
+      valueFontColor = _ref.valueFontColor;
 
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -78,16 +82,20 @@ var SegmentedRoundDisplay = function SegmentedRoundDisplay(_ref) {
   var totalSpacing = totalSpaces * arcSpacing;
   var arcSize = (totalArcSize - totalSpacing) / totalArcs;
   var arcsStart = 90 - totalArcSize / 2;
-  var margin = 10;
-  var svgWidth = (radius + arcWidth) * 2;
-  var svgHeight = (radius + arcWidth) * 2;
+  var margin = 35;
+  var svgWidth = (radius + filledArcWidth) * 2 + 2 * margin;
+  var svgHeight = (radius + filledArcWidth) * 2 + 2 * margin;
+  var totalFilledValue = segments.reduce(function (acc, actual) {
+    return acc + actual.filled;
+  }, 0);
   var createArcs = (0, _react.useCallback)(function () {
     var newArcs = segments.map(function (goal, index) {
       var newArc = {
-        centerX: radius + arcWidth,
-        centerY: radius + arcWidth,
+        centerX: radius + filledArcWidth + margin,
+        centerY: radius + filledArcWidth + margin,
         start: arcsStart + index * arcSize,
-        end: arcsStart + arcSize + index * arcSize
+        end: arcsStart + arcSize + index * arcSize,
+        isComplete: goal.total == goal.filled
       };
 
       if (index !== 0) {
@@ -99,26 +107,52 @@ var SegmentedRoundDisplay = function SegmentedRoundDisplay(_ref) {
       return newArc;
     });
     setArcs(newArcs);
-  }, [segments, arcSize, arcSpacing, arcWidth, arcsStart, radius]);
+  }, [segments, arcSize, arcSpacing, filledArcWidth, arcsStart, radius]);
 
-  var renderDisplayValue = function renderDisplayValue() {
+  var renderDisplayValue = function renderDisplayValue(angle, value) {
     var arc = arcs[arcs.length - 1];
 
     if (!arc) {
-      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null);
+      return /*#__PURE__*/_react["default"].createElement("g", null);
     }
 
-    var pos = polarToCartesian(arc.centerX, arc.centerY, radius, arc.filled);
-    return /*#__PURE__*/_react["default"].createElement("text", {
+    var pos = polarToCartesian(arc.centerX, arc.centerY, radius, (angle || arc.filled) + 3);
+    var boxFinalPosition = {
+      x: pos.x - 40,
+      y: pos.y + 6
+    };
+    var formatedValue = formatValue ? formatValue(value || totalFilledValue) : parseInt(value || totalFilledValue);
+    return /*#__PURE__*/_react["default"].createElement("g", null, /*#__PURE__*/_react["default"].createElement("rect", {
+      x: boxFinalPosition.x,
+      y: boxFinalPosition.y,
+      width: "80",
+      height: "25",
+      fill: valueBoxColor,
+      rx: 3
+    }), /*#__PURE__*/_react["default"].createElement("rect", {
+      width: "10",
+      height: "10",
+      fill: valueBoxColor,
+      transform: "translate(".concat(pos.x, ",").concat(pos.y, ") rotate(45)"),
+      rx: 2
+    }), /*#__PURE__*/_react["default"].createElement("text", {
       x: pos.x,
-      y: pos.y,
-      fill: "red"
-    }, displayValue);
+      "font-weight": "bold",
+      fontSize: 14,
+      y: boxFinalPosition.y + 18,
+      fill: valueFontColor,
+      "text-anchor": "middle"
+    }, formatedValue));
   };
 
   (0, _react.useEffect)(function () {
     createArcs();
   }, [segments, createArcs]);
+
+  if (arcs.length == 0) {
+    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null);
+  }
+
   return /*#__PURE__*/_react["default"].createElement("svg", {
     width: svgWidth,
     height: svgHeight,
@@ -128,39 +162,53 @@ var SegmentedRoundDisplay = function SegmentedRoundDisplay(_ref) {
       key: index.toString()
     }, /*#__PURE__*/_react["default"].createElement("path", {
       fill: "none",
-      stroke: emptyColor,
+      stroke: emptyArcColor,
       strokeWidth: emptyArcWidth,
       strokeLinecap: "round",
       d: drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.end)
-    }), animated && /*#__PURE__*/_react["default"].createElement(_renderprops.Spring, {
+    }), animated && arc.filled > arc.start && /*#__PURE__*/_react["default"].createElement(_renderprops.Spring, {
       from: {
         x: arc.start,
         y: 0
       },
       to: {
         x: arc.filled + 0.6,
-        y: arcWidth
+        y: filledArcWidth
       },
       config: {
         duration: animationDuration / totalArcs,
         delay: animationDuration / totalArcs * index
       }
     }, function (props) {
-      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, arc.filled > arc.start && /*#__PURE__*/_react["default"].createElement("path", {
+      return /*#__PURE__*/_react["default"].createElement("path", {
         fill: "none",
-        stroke: filledColor,
+        stroke: arc.isComplete ? filledArcColor : incompleteArcColor || filledArcColor,
         strokeWidth: props.y,
         strokeLinecap: "round",
         d: drawArc(arc.centerX, arc.centerY, radius, arc.start, props.x)
-      }));
-    }), !animated && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, arc.filled > arc.start && /*#__PURE__*/_react["default"].createElement("path", {
+      });
+    }), !animated && arc.filled > arc.start && /*#__PURE__*/_react["default"].createElement("path", {
       fill: "none",
-      stroke: filledColor,
-      strokeWidth: arcWidth,
+      stroke: arc.isComplete ? filledArcColor : incompleteArcColor || filledArcColor,
+      strokeWidth: filledArcWidth,
       strokeLinecap: "round",
       d: drawArc(arc.centerX, arc.centerY, radius, arc.start, arc.filled)
-    })));
-  }), displayValue !== '' && renderDisplayValue());
+    }));
+  }), displayValue && /*#__PURE__*/_react["default"].createElement("g", null, !animated && renderDisplayValue(), animated && /*#__PURE__*/_react["default"].createElement(_renderprops.Spring, {
+    from: {
+      x: arcsStart,
+      value: 0
+    },
+    to: {
+      x: arcs[arcs.length - 1].filled,
+      value: totalFilledValue
+    },
+    config: {
+      duration: animationDuration
+    }
+  }, function (props) {
+    return renderDisplayValue(props.x, props.value);
+  })));
 };
 
 SegmentedRoundDisplay.propTypes = {
@@ -168,29 +216,38 @@ SegmentedRoundDisplay.propTypes = {
     total: _propTypes["default"].number.isRequired,
     filled: _propTypes["default"].number.isRequired
   })),
-  arcWidth: _propTypes["default"].number,
+  filledArcWidth: _propTypes["default"].number,
   emptyArcWidth: _propTypes["default"].number,
   arcSpacing: _propTypes["default"].number,
   totalArcSize: _propTypes["default"].number,
   radius: _propTypes["default"].number,
-  emptyColor: _propTypes["default"].string,
-  filledColor: _propTypes["default"].string,
+  emptyArcColor: _propTypes["default"].string,
+  filledArcColor: _propTypes["default"].string,
   formatAmount: _propTypes["default"].func,
   style: _propTypes["default"].object,
   animationDuration: _propTypes["default"].number,
-  animated: _propTypes["default"].bool
+  animated: _propTypes["default"].bool,
+  formatValue: _propTypes["default"].func,
+  incompleteArcColor: _propTypes["default"].string,
+  displayValue: _propTypes["default"].bool,
+  valueBoxColor: _propTypes["default"].string,
+  valueFontColor: _propTypes["default"].string
 };
 SegmentedRoundDisplay.defaultProps = {
   segments: [],
-  arcWidth: 7,
+  filledArcWidth: 7,
   emptyArcWidth: 7,
   arcSpacing: 7,
   totalArcSize: 280,
   radius: 150,
-  emptyColor: 'grey',
-  filledColor: 'green',
-  animationDuration: 700,
-  animated: true
+  emptyArcColor: '#ADB1CC',
+  filledArcColor: '#5ECCAA',
+  animationDuration: 1000,
+  animated: true,
+  incompleteArcColor: '#23318C',
+  displayValue: false,
+  valueBoxColor: '#23318C',
+  valueFontColor: '#FFFFFF'
 };
 var _default = SegmentedRoundDisplay;
 exports["default"] = _default;

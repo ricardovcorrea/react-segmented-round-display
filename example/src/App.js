@@ -7,203 +7,314 @@ function App() {
 
   const examples = [
     {
+      displayValue: true,
+      formatValue: (value) => `R$ ${value.toFixed(2)}`,
       segments: [
         {
-          total: 100,
-          filled: 50
+          total: 80,
+          filled: 40
         }
       ]
     },
     {
-      filledColor: 'red',
-      emptyColor: 'blue',
-      animationDuration: 2000,
-      radius: 130,
+      displayValue: true,
+      formatValue: (value) => `R$ ${value.toFixed(2)}`,
       segments: [
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 30,
+          filled: 15
+        }
+      ]
+    },
+    {
+      displayValue: true,
+      formatValue: (value) => `R$ ${value.toFixed(2)}`,
+      segments: [
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 30,
+          filled: 30
         },
         {
           total: 100,
-          filled: 50
+          filled: 40
         }
       ]
     },
     {
-      arcWidth: 8,
-      emptyArcWidth: 15,
-      filledColor: 'blue',
-      emptyColor: 'red',
-      arcSpacing: 15,
+      displayValue: true,
+      filledArcColor: '#ec823a',
+      emptyArcColor: '#e8e4e1',
+      incompleteArcColor: '#f9c49a',
+      valueBoxColor: '#000000',
+      valueFontColor: '#FFFFFF',
+      formatValue: (value) => `${value.toFixed(0)} pts`,
+      segments: [
+        {
+          total: 80,
+          filled: 40
+        }
+      ]
+    },
+    {
+      displayValue: true,
+      filledArcColor: '#ec823a',
+      emptyArcColor: '#e8e4e1',
+      incompleteArcColor: '#f9c49a',
+      valueBoxColor: '#000000',
+      valueFontColor: '#FFFFFF',
+      formatValue: (value) => `${value.toFixed(0)} pts`,
+      segments: [
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 30,
+          filled: 15
+        }
+      ]
+    },
+    {
+      displayValue: true,
+      filledArcColor: '#ec823a',
+      emptyArcColor: '#e8e4e1',
+      incompleteArcColor: '#f9c49a',
+      valueBoxColor: '#000000',
+      valueFontColor: '#FFFFFF',
+      formatValue: (value) => `${value.toFixed(0)} pts`,
+      segments: [
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 30,
+          filled: 30
+        },
+        {
+          total: 100,
+          filled: 40
+        }
+      ]
+    },
+    {
       animated: false,
-      animationDuration: 1000,
-      radius: 100,
+      displayValue: true,
+      filledArcColor: '#442727',
+      emptyArcColor: '#eae7d9',
+      incompleteArcColor: '#d2c6b2',
+      valueBoxColor: '#442727',
+      valueFontColor: '#eae7d9',
       segments: [
         {
-          total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 50
+          total: 80,
+          filled: 40
         }
       ]
     },
     {
-      arcWidth: 5,
-      filledColor: 'black',
-      animationDuration: 2000,
-      arcSpacing: 20,
-      totalArcSize: 340,
-      radius: 30,
+      animated: false,
+      displayValue: true,
+      filledArcColor: '#442727',
+      emptyArcColor: '#eae7d9',
+      incompleteArcColor: '#d2c6b2',
+      valueBoxColor: '#442727',
+      valueFontColor: '#eae7d9',
       segments: [
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
         },
         {
-          total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 50
+          total: 30,
+          filled: 15
         }
       ]
     },
     {
-      arcWidth: 15,
-      emptyArcWidth: 2,
-      filledColor: 'orange',
-      emptyColor: 'black',
-      animationDuration: 300,
-      arcSpacing: 30,
+      animated: false,
+      displayValue: true,
+      filledArcColor: '#442727',
+      emptyArcColor: '#eae7d9',
+      incompleteArcColor: '#d2c6b2',
+      valueBoxColor: '#442727',
+      valueFontColor: '#eae7d9',
       segments: [
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 30,
+          filled: 30
         },
         {
           total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 50
+          filled: 40
         }
       ]
     },
     {
-      arcWidth: 15,
-      filledColor: 'purple',
-      emptyColor: 'green',
-      animationDuration: 5000,
-      arcSpacing: 20,
+      animated: false,
+      filledArcColor: '#7f78d2',
+      emptyArcColor: '#ffe2ff',
+      incompleteArcColor: '#481380',
       segments: [
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 30,
+          filled: 30
         },
         {
           total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 100
-        },
-        {
-          total: 100,
-          filled: 50
+          filled: 40
         }
       ]
     },
     {
-      arcWidth: 5,
-      emptyArcWidth: 10,
-      filledColor: 'yellow',
-      animationDuration: 3000,
-      radius: 200,
-      totalArcSize: 180,
+      animated: false,
+      filledArcColor: '#7f78d2',
+      emptyArcColor: '#ffe2ff',
+      incompleteArcColor: '#481380',
       segments: [
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
         },
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
         },
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
         },
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
         },
         {
-          total: 100,
-          filled: 50
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
         }
       ]
     },
     {
-      arcWidth: 15,
-      filledColor: 'fuchsia',
-      animationDuration: 5000,
-      arcSpacing: 20,
-      totalArcSize: 90,
-      radius: 200,
+      animated: false,
+      filledArcColor: '#7f78d2',
+      emptyArcColor: '#ffe2ff',
+      incompleteArcColor: '#481380',
       segments: [
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
         },
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
         },
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
         },
         {
-          total: 100,
-          filled: 100
+          total: 80,
+          filled: 80
         },
         {
-          total: 100,
-          filled: 50
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        }, {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 80
+        },
+        {
+          total: 80,
+          filled: 0
+        },
+        {
+          total: 80,
+          filled: 0
         }
       ]
     }
   ]
   return (
     <div className="App">
-      {examples.map((example, i) => (<SegmentedRoundDisplay style={{ marginLeft: 30 }} key={i} {...example} />))}
+      <div>
+        {examples.slice(0, 6).map((example, i) => (<SegmentedRoundDisplay style={{ marginLeft: 30 }} key={i} {...example} />))}
+      </div>
 
+      <div>
+        {examples.slice(6, 12).map((example, i) => (<SegmentedRoundDisplay style={{ marginLeft: 30 }} key={i} {...example} />))}
+      </div>
 
     </div>
   );

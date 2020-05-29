@@ -8689,14 +8689,10 @@ react-scripts@3.4.1:
   optionalDependencies:
     fsevents "2.1.2"
 
-"react-segmented-round-display@C:\\Users\\Ricardo\\Documents\\Projetos\\segmented-round-display-react":
+react-segmented-round-display@1.0.0:
   version "1.0.0"
-  dependencies:
-    prop-types "^15.7.2"
-    react-spring "^8.0.27"
-
-"react-segmented-round-display@file:..":
-  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-segmented-round-display/-/react-segmented-round-display-1.0.0.tgz#d770fe1a13bb6ad157d5ee4dacea1462d7e2abbb"
+  integrity sha512-JgDmHA3hghTpjAlRi91WreiEBPoSCj2pg2/OenepYVZNddk6A4UmaEFKtaDN60YLP/4J2BTUZAHY97kv7wCdiw==
   dependencies:
     prop-types "^15.7.2"
     react-spring "^8.0.27"
