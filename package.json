@@ -1,7 +1,7 @@
 {
   "name": "react-segmented-round-display",
-  "version": "1.1.0",
-  "description": "![Example](https://raw.githubusercontent.com/ricardovcorrea/segmented-round-display-react/master/example.gif)",
+  "version": "1.1.1",
+  "description": "react-segmented-round-display provides a simple ARC component, drawn with SVG, it can have one or more segments and its easy configurable.",
   "main": "index.js",
   "directories": {
     "example": "example"
@@ -32,5 +32,16 @@
   "peerDependencies": {
     "react": "^16.6.1",
     "react-dom": "^16.6.3"
-  }
+  },
+  "keywords": [
+    "react",
+    "chart",
+    "charts",
+    "graphs",
+    "arc",
+    "segments",
+    "progress",
+    "SVG",
+    "round"
+  ]
 }
