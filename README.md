@@ -1,6 +1,8 @@
 
+
 ## react-segmented-round-display
-[![Version](https://img.shields.io/npm/v/react-segmented-round-display.svg)](https://www.npmjs.com/package/react-native-svg)  [![NPM](https://img.shields.io/npm/dm/react-segmented-round-display.svg)](https://www.npmjs.com/package/react-native-svg)
+[![Version](https://img.shields.io/npm/v/react-segmented-round-display.svg)](https://www.npmjs.com/package/react-segmented-round-display)  [![NPM](https://img.shields.io/npm/dm/react-segmented-round-display.svg)](https://www.npmjs.com/package/react-segmented-round-display) ![NPM](https://img.shields.io/github/stars/ricardovcorrea/segmented-round-display-react?style=social)
+
 
 `react-segmented-round-display` provides a simple ARC component, drawn with SVG, it can have one or more segments and its easy configurable.
 
@@ -118,7 +120,6 @@ git clone https://github.com/ricardovcorrea/segmented-round-display-react.git
 cd segmented-round-display-react/example
 yarn
 yarn start
-
 ```
 
 ## Contributors
