@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ricardovcorrea/segmented-round-display-react.git"
+    "url": "git+https://github.com/ricardovcorrea/react-segmented-round-display.git"
   },
   "author": "Ricardo V. Corrêa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ricardovcorrea/segmented-round-display-react/issues"
+    "url": "https://github.com/ricardovcorrea/react-segmented-round-display/issues"
   },
-  "homepage": "https://github.com/ricardovcorrea/segmented-round-display-react#readme",
+  "homepage": "https://github.com/ricardovcorrea/react-segmented-round-display#readme",
   "devDependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.1",

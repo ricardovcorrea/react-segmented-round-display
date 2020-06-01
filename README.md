@@ -1,12 +1,12 @@
 
 
 ## react-segmented-round-display
-[![Version](https://img.shields.io/npm/v/react-segmented-round-display.svg)](https://www.npmjs.com/package/react-segmented-round-display)  [![NPM](https://img.shields.io/npm/dm/react-segmented-round-display.svg)](https://www.npmjs.com/package/react-segmented-round-display) ![NPM](https://img.shields.io/github/stars/ricardovcorrea/segmented-round-display-react?style=social)
+[![Version](https://img.shields.io/npm/v/react-segmented-round-display.svg)](https://www.npmjs.com/package/react-segmented-round-display)  [![NPM](https://img.shields.io/npm/dm/react-segmented-round-display.svg)](https://www.npmjs.com/package/react-segmented-round-display) ![STARS](https://img.shields.io/github/stars/ricardovcorrea/react-segmented-round-display?style=social)
 
 
 `react-segmented-round-display` provides a simple ARC component, drawn with SVG, it can have one or more segments and its easy configurable.
 
-![Example](https://raw.githubusercontent.com/ricardovcorrea/segmented-round-display-react/master/examples.gif)
+![Example](https://raw.githubusercontent.com/ricardovcorrea/react-segmented-round-display/master/examples.gif)
 
 ## Features
 -   One segment
@@ -18,6 +18,7 @@
 - 	Configurable colors
 - 	Configurable ARC radius and total size in degrees
 - 	Configurable space between arc segments
+- 	[React Native version](https://github.com/ricardovcorrea/react-native-segmented-round-display "React Native version")
 
 ## Installation
 `yarn add react-segmented-round-display`
@@ -30,7 +31,7 @@
 
 Here's a simple example. To render output like this:
 
-![Usage example](https://raw.githubusercontent.com/ricardovcorrea/segmented-round-display-react/master/usage_example.gif)
+![Usage example](https://raw.githubusercontent.com/ricardovcorrea/react-segmented-round-display/master/usage_example.gif)
 
 ```jsx
 import React from 'react';
@@ -116,8 +117,8 @@ export default App;
 ## Run example
 
 ```bash
-git clone https://github.com/ricardovcorrea/segmented-round-display-react.git
-cd segmented-round-display-react/example
+git clone https://github.com/ricardovcorrea/react-segmented-round-display.git
+cd react-segmented-round-display/example
 yarn
 yarn start
 ```
