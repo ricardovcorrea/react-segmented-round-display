@@ -8689,10 +8689,10 @@ react-scripts@3.4.1:
   optionalDependencies:
     fsevents "2.1.2"
 
-react-segmented-round-display@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-segmented-round-display/-/react-segmented-round-display-1.0.0.tgz#d770fe1a13bb6ad157d5ee4dacea1462d7e2abbb"
-  integrity sha512-JgDmHA3hghTpjAlRi91WreiEBPoSCj2pg2/OenepYVZNddk6A4UmaEFKtaDN60YLP/4J2BTUZAHY97kv7wCdiw==
+react-segmented-round-display@1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-segmented-round-display/-/react-segmented-round-display-1.1.3.tgz#612f5c3e454a7c54fcde6ce1681057ffdb092f37"
+  integrity sha512-7MjK46l8zbJcrlqmkPU9GOvcZF6WwMJgYMCXsWFb3ZYHRa6hrYLpveoRL5b9RW7YuXCBgM+XDAXyYhdwb5y1eQ==
   dependencies:
     prop-types "^15.7.2"
     react-spring "^8.0.27"
@@ -10585,9 +10585,9 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
-  integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
+  integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3, whatwg-encoding@^1.0.5:
   version "1.0.5"
