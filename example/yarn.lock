@@ -3697,9 +3697,9 @@ dns-equal@^1.0.0:
   integrity sha1-s55/HabrCnW6nBcySzR1PEfgZU0=
 
 dns-packet@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/dns-packet/-/dns-packet-1.3.1.tgz#12aa426981075be500b910eedcd0b47dd7deda5a"
-  integrity sha512-0UxfQkMhYAUaZI+xrNZOz/as5KgDU0M/fQ9b6SpkyLbk3GEswDi6PADJVaYJradtRVsRIlF1zLyOodbcTCDzUg==
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/dns-packet/-/dns-packet-1.3.4.tgz#e3455065824a2507ba886c55a89963bb107dec6f"
+  integrity sha512-BQ6F4vycLXBvdrJZ6S3gZewt6rcrks9KBgM9vrhW+knGRqc8uEdT7fuCwloc7nny5xNoMJ17HGH0R/6fpo8ECA==
   dependencies:
     ip "^1.1.0"
     safe-buffer "^5.0.1"
@@ -8689,10 +8689,10 @@ react-scripts@3.4.1:
   optionalDependencies:
     fsevents "2.1.2"
 
-react-segmented-round-display@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-segmented-round-display/-/react-segmented-round-display-1.0.0.tgz#d770fe1a13bb6ad157d5ee4dacea1462d7e2abbb"
-  integrity sha512-JgDmHA3hghTpjAlRi91WreiEBPoSCj2pg2/OenepYVZNddk6A4UmaEFKtaDN60YLP/4J2BTUZAHY97kv7wCdiw==
+react-segmented-round-display@1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-segmented-round-display/-/react-segmented-round-display-1.1.3.tgz#612f5c3e454a7c54fcde6ce1681057ffdb092f37"
+  integrity sha512-7MjK46l8zbJcrlqmkPU9GOvcZF6WwMJgYMCXsWFb3ZYHRa6hrYLpveoRL5b9RW7YuXCBgM+XDAXyYhdwb5y1eQ==
   dependencies:
     prop-types "^15.7.2"
     react-spring "^8.0.27"
