@@ -6663,9 +6663,9 @@ memory-fs@^0.5.0:
     readable-stream "^2.0.1"
 
 merge-deep@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/merge-deep/-/merge-deep-3.0.2.tgz#f39fa100a4f1bd34ff29f7d2bf4508fbb8d83ad2"
-  integrity sha512-T7qC8kg4Zoti1cFd8Cr0M+qaZfOwjlPDEdZIIPPB2JZctjaPM4fX+i7HOId69tAti2fvO6X5ldfYUONDODsrkA==
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/merge-deep/-/merge-deep-3.0.3.tgz#1a2b2ae926da8b2ae93a0ac15d90cd1922766003"
+  integrity sha512-qtmzAS6t6grwEkNrunqTBdn0qKwFgNWvlxUbAV8es9M7Ot1EbyApytCnvE0jALPa46ZpKDUo527kKiaWplmlFA==
   dependencies:
     arr-union "^3.1.0"
     clone-deep "^0.2.4"
@@ -8689,10 +8689,10 @@ react-scripts@3.4.1:
   optionalDependencies:
     fsevents "2.1.2"
 
-react-segmented-round-display@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-segmented-round-display/-/react-segmented-round-display-1.0.0.tgz#d770fe1a13bb6ad157d5ee4dacea1462d7e2abbb"
-  integrity sha512-JgDmHA3hghTpjAlRi91WreiEBPoSCj2pg2/OenepYVZNddk6A4UmaEFKtaDN60YLP/4J2BTUZAHY97kv7wCdiw==
+react-segmented-round-display@1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-segmented-round-display/-/react-segmented-round-display-1.1.3.tgz#612f5c3e454a7c54fcde6ce1681057ffdb092f37"
+  integrity sha512-7MjK46l8zbJcrlqmkPU9GOvcZF6WwMJgYMCXsWFb3ZYHRa6hrYLpveoRL5b9RW7YuXCBgM+XDAXyYhdwb5y1eQ==
   dependencies:
     prop-types "^15.7.2"
     react-spring "^8.0.27"
